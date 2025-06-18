@@ -22,7 +22,7 @@ const InternalCalendar: React.ForwardRefRenderFunction<
   CalendarProps
 > = (props, ref) => {
   // 解构props，设置默认值
-  const { value, defaultValue, onChange } = props;
+  // const { value, defaultValue, onChange } = props;
 
   const [date, setDate] = useControllableValue(props, {
     defaultValue: new Date(),
