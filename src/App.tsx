@@ -1,15 +1,25 @@
-import { useRef } from "react";
+import { useState } from "react";
 import MiniCalendar from "./miniCalendar";
 
-interface CalendarRef {
-  getDate: () => Date;
-  setDate: (date: Date) => void;
-}
 export default function App() {
-  const calendarRef = useRef<CalendarRef>(null);
+  const [date, setDate] = useState(new Date());
   return (
     <div>
-      <MiniCalendar ref={calendarRef} defaultValue={new Date()} />
+      {/* 受控 */}
+      <MiniCalendar
+        value={date}
+        onChange={(newDate) => {
+          setDate(newDate);
+          console.log(newDate.toLocaleDateString());
+        }}
+      />
+      {/* 非受控 */}
+      <MiniCalendar
+        defaultValue={new Date()}
+        onChange={(newDate) => {
+          console.log(newDate.toLocaleDateString());
+        }}
+      />
     </div>
   );
 }
